@@ -1,17 +1,21 @@
-package nl.hakktastic.pensioenpotapi.domain;
+package nl.hakktastic.pensioenpotapi.domain.aggregate.valueobject;
 
-import java.math.BigDecimal;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigDecimal;
+
+@Slf4j
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class Franchise {
 
-  private final BigDecimal value;
+    private final BigDecimal value;
 
-  public static Franchise of(BigDecimal providedValue) {
-    return new Franchise(providedValue);
-  }
+    public static Franchise of(BigDecimal value) {
+        log.debug("provided value='{}'", value);
+        return new Franchise(value);
+    }
 }

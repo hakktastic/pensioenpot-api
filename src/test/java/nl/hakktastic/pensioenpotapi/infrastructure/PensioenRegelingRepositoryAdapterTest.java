@@ -15,7 +15,7 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 @Import(PostgreSqlContainerConfiguration.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PensioenRegelingRepositoryAdapterIT {
+class PensioenRegelingRepositoryAdapterTest {
 
   @Autowired
   private PostgreSQLContainer<?> postgreSQLContainer;

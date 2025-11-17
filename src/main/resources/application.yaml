@@ -1,1 +1,30 @@
-spring.application.name=pensioenpot-api
+spring:
+  application:
+    name: pensioenpot-api
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  docker:
+    compose:
+      enabled: true
+      file: ./compose.yaml
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pensioen
+    username: user
+    password: passw0rd
+    hikari:
+      data-source-properties:
+        sslmode: disable
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    nl.hakktastic.pensioenpotapi: DEBUG

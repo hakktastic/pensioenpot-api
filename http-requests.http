@@ -1,11 +1,11 @@
-###
-GET http://localhost:8080/api/v1/pensions/projections?
-    pensioenregelingReference=33333333-0000-0000-0000-000000000001&
+### bereken voor een jaar
+GET http://localhost:8080/api/v1/pensions/projections/33333333-0000-0000-0000-000000000001?
     gewenstePensioenLeeftijd=61
 
-<> 2025-11-16T165751.200.json
-<> 2025-11-16T165603.200.json
-<> 2025-11-16T165423.500.json
-<> 2025-11-16T165244.500.json
-<> 2025-11-16T164954.200.json
-<> 2025-11-16T164737.200.json
+### bereken voor vijf jaar
+GET http://localhost:8080/api/v1/pensions/projections/33333333-0000-0000-0000-000000000001?
+    gewenstePensioenLeeftijd=65
+
+### niet bestaand
+GET http://localhost:8080/api/v1/pensions/projections/33333333-0000-0000-0000-000000000000?
+    gewenstePensioenLeeftijd=61

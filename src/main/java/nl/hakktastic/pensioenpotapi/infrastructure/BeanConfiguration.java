@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-class BeanConfig {
+class BeanConfiguration {
 
-  @Bean
-  public PensioenRegelingService pensioenRegelingService(PensioenRegelingRepository pensioenRegelingRepository, PensioenRegelingProvider pensioenRegelingProvider) {
-    return PensioenRegelingService.of(pensioenRegelingRepository, pensioenRegelingProvider);
-  }
+    @Bean
+    PensioenRegelingService pensioenRegelingService(PensioenRegelingRepository pensioenRegelingRepository, PensioenRegelingProvider pensioenRegelingProvider) {
+        return PensioenRegelingService.of(pensioenRegelingRepository, pensioenRegelingProvider);
+    }
 
-  @Bean
-  public PensioenRegelingProvider pensioenRegelingProvider(PensioenRegelingRepository pensioenRegelingRepository) {
-    return PensioenRegelingProvider.of(pensioenRegelingRepository);
-  }
+    @Bean
+    PensioenRegelingProvider pensioenRegelingProvider(PensioenRegelingRepository pensioenRegelingRepository) {
+        return PensioenRegelingProvider.of(pensioenRegelingRepository);
+    }
 }

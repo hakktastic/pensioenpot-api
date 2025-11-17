@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: 'postgres:15.15-alpine3.22'
+    environment:
+      - 'POSTGRES_DB=pensioen'
+      - 'POSTGRES_USER=user'
+      - 'POSTGRES_PASSWORD=passw0rd'
+    ports:
+      - '5432:5432'

@@ -1,24 +1,27 @@
 package nl.hakktastic.pensioenpotapi.domain;
 
-import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nl.hakktastic.pensioenpotapi.domain.aggregate.PensioenRegelingProvider;
 import nl.hakktastic.pensioenpotapi.domain.aggregate.valueobject.PensioenRegelingReference;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
 @Slf4j
 @RequiredArgsConstructor(staticName = "of")
-public class PensioenPotService {
+public class PensioenRegelingService {
 
-  private final PensioenPotRepository pensioenPotRepository;
-  private final PensioenRegelingProvider pensioenRegelingProvider;
+    private final PensioenRegelingRepository pensioenRegelingRepository;
+    private final PensioenRegelingProvider pensioenRegelingProvider;
 
-  public BigDecimal berekenVerwachteWaarde(PensioenRegelingReference pensioenRegelingReference, int gewenstePensioenleeftijd) {
+    public BigDecimal berekenVerwachteWaarde(UUID pensioenRegelingReferenceUUID, int gewenstePensioenleeftijd) {
 
-    final var pensioenRegeling = pensioenRegelingProvider.findPensioenRegeling(pensioenRegelingReference);
-    final var beleggingsrekeningReference = pensioenRegeling.getBeleggingsrekeningReference();
-    final var huidigeWaardeBeleggingen = pensioenPotRepository.getHuidigeWaardeBeleggingen(beleggingsrekeningReference);
+        final var pensioenRegelingReference = PensioenRegelingReference.of(pensioenRegelingReferenceUUID);
+        final var pensioenRegeling = pensioenRegelingProvider.findPensioenRegeling(pensioenRegelingReference);
+        final var beleggingsrekeningReference = pensioenRegeling.getBeleggingsrekeningReference();
+        final var huidigeWaardeBeleggingen = pensioenRegelingRepository.getHuidigeWaardeBeleggingen(beleggingsrekeningReference);
 
-    return pensioenRegeling.berekenVerwachtePensioenWaarde(gewenstePensioenleeftijd, huidigeWaardeBeleggingen);
-  }
+        return pensioenRegeling.berekenVerwachtePensioenWaarde(gewenstePensioenleeftijd, huidigeWaardeBeleggingen);
+    }
 }

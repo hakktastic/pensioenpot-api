@@ -1,4 +1,7 @@
 package nl.hakktastic.pensioenpotapi.application.rest;
 
-public class VerwachtePensioenWaardeResponse {
+import java.math.BigDecimal;
+import java.util.UUID;
+
+record VerwachtePensioenWaardeResponse(UUID pensioenRegelingReference, BigDecimal verwachtePensioenWaarde) {
 }

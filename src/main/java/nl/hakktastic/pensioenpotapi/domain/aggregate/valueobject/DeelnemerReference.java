@@ -1,15 +1,19 @@
-package nl.hakktastic.pensioenpotapi.domain;
+package nl.hakktastic.pensioenpotapi.domain.aggregate.valueobject;
 
-import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.UUID;
+
+@Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class DeelnemerReference {
 
-  private final UUID value;
+    private final UUID value;
 
-  public static DeelnemerReference of(UUID value) {
-    return new DeelnemerReference(value);
-  }
+    public static DeelnemerReference of(UUID value) {
+        log.debug("provided value='{}'", value);
+        return new DeelnemerReference(value);
+    }
 }

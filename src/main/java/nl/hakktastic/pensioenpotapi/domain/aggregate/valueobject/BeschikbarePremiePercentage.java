@@ -1,18 +1,21 @@
-package nl.hakktastic.pensioenpotapi.domain;
+package nl.hakktastic.pensioenpotapi.domain.aggregate.valueobject;
 
-import java.math.BigDecimal;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigDecimal;
 
+@Slf4j
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class BeschikbarePremiePercentage {
 
-  public final BigDecimal value;
+    public final BigDecimal value;
 
-  public static BeschikbarePremiePercentage of(BigDecimal providedValue) {
-    return new BeschikbarePremiePercentage(providedValue);
-  }
+    public static BeschikbarePremiePercentage of(BigDecimal value) {
+        log.debug("provided value='{}'", value);
+        return new BeschikbarePremiePercentage(value);
+    }
 }
